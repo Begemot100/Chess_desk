@@ -1,0 +1,29 @@
+def desk(yy, xx, cellsize=100):
+    sd.resolution = (yy * cellsize, xx * cellsize)
+    y_mult = (yy-1) * cellsize + 1
+    x_mult = xx * cellsize + 1
+
+    for step in [0, cellsize]:
+
+        for y in range(step, y_mult, 2*cellsize):
+            for x in range(step, x_mult, 2*cellsize):
+
+                point = sd.get_point(x, y)
+
+                sd.square(point, side=cellsize, width=0, color=sd.COLOR_BLACK)
+
+    for step_white in [0, 100]:
+
+        for y in range(y_mult-step_white, 0-1, -2*cellsize):
+            for x in range(step_white, x_mult, 2*cellsize):
+
+                point = sd.get_point(x, y)
+
+                sd.square(point, side=cellsize, width=0, color=sd.COLOR_WHITE)
+
+
+desk(8, 8)
+
+
+
+sd.pause()
